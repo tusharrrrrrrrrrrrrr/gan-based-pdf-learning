@@ -1,4 +1,4 @@
-# PART-2 : Learning PDF using GAN (Data-Driven Approach)
+# Learning PDF using GAN (Data-Driven Approach)
 
 ## 📖 Objective
 
