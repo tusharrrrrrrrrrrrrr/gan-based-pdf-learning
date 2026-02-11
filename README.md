@@ -1,4 +1,5 @@
-# 📘  Probability Density Function Learning using Roll-Number-Based Non-Linear Transformation
+# 📘 PART-1  :  
+## Probability Density Function Learning using Roll-Number-Based Non-Linear Transformation
 
 ## 📖  Project Description
 
@@ -170,3 +171,114 @@ The experiment highlights how theoretical probability concepts can be applied to
 - Standard Gaussian Distribution Theory
 
 - Probability and Statistics Concepts
+---
+
+# PART-2 : Learning PDF using GAN (Data-Driven Approach)
+
+## 📖 Objective
+
+In this part, no analytical form of the probability density function is assumed.
+
+The objective is to learn the distribution of the transformed variable $z$ directly from data using a Generative Adversarial Network (GAN).
+
+Unlike Part-1, this approach does not assume a Gaussian distribution and instead models the density implicitly using neural networks.
+
+--- 
+###  Transformation  ( completely previously)
+
+### 🧠 Step 2: GAN Architecture Design
+
+A Generative Adversarial Network (GAN) was designed to learn the distribution of $z$.
+
+The GAN consists of two neural networks:
+
+####  1️⃣ Generator (G)
+
+The Generator:
+
+Takes random noise $\epsilon \sim \mathcal{N}(0,1)$ as input
+
+Produces synthetic samples $z_f$
+
+Learns to approximate the true data distribution
+
+Input: Random noise vector
+Output: Generated $z$ sample
+
+#### 2️⃣ Discriminator (D)
+
+The Discriminator:
+
+Receives either real $z$ samples or fake $z_f$ samples
+
+Outputs probability of being real
+
+Input: 1-D sample
+Output: Probability (real or fake)
+
+#### ⚙️ Training Procedure
+
+During training:
+
+The Discriminator learns to distinguish real and fake samples.
+
+The Generator learns to fool the Discriminator.
+
+Both networks are optimized using Binary Cross-Entropy loss.
+
+Training is performed iteratively until the generated samples resemble the real distribution.
+
+### 📊 Step 3: PDF Approximation from Generator
+
+After training:
+
+A large number of synthetic samples $z_f$ were generated.
+
+The probability density was estimated using:
+
+Histogram Density Estimation
+
+The learned distribution was compared with the real data distribution.
+
+--- 
+###  📈 Observations
+
+#### 🔹Mode Coverage
+
+The generator was able to capture the primary modes of the distribution.  Minor deviations were observed in regions with low data density.
+
+#### 🔹 Training Stability
+
+During training:
+
+- Loss values oscillated initially
+
+- Gradual stabilization was observed after sufficient epochs
+
+- No severe mode collapse was detected
+
+#### 🔹 Quality of Generated Distribution
+
+The generated distribution closely followed the shape of the real transformed data.
+Small discrepancies exist due to training limitations and finite sample size.
+---
+### ⚖️ Comparison of Methods
+
+| Analytical Method (Part-1)       | GAN Method (Part-2)        |
+| -------------------------------- | -------------------------- |
+| Assumes Gaussian distribution    | No distribution assumption |
+| Closed-form parameter estimation | Neural network training    |
+| Fast computation                 | Computationally intensive  |
+| Parametric model                 | Non-parametric model       |
+
+### 🎯  Conclusion
+
+This project demonstrates two distinct approaches to probability density estimation:
+
+Parametric estimation using analytical Gaussian assumptions
+
+Non-parametric learning using Generative Adversarial Networks
+
+The comparison highlights the difference between theoretical modeling and data-driven learning methods.
+
+The GAN-based method provides flexibility in modeling complex distributions without assuming any predefined functional form.
